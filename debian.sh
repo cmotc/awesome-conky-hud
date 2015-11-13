@@ -1,6 +1,7 @@
 #! /bin/sh
 # Configure your paths and filenames
 SOURCEBINPATH=.
+SOURCEDIR=conky/
 SOURCEBIN=awmconky
 SOURCEHUD=conky/hud.lua
 SOURCEDOC=README.md
@@ -40,7 +41,7 @@ mv debian/rules.new debian/rules
 echo usr/bin/$SOURCEBIN usr/bin > debian/install 
 echo etc/conkyrc etc/conkyrc >> debian/install 
 echo etc/xdg/awesome/rc.lua.hud.example etc/xdg/awesome >> debian/install
-echo etc/xdg/awesome/$SOURCEHUD etc/xdg/awesome/conky/ >> debian/install
+echo etc/xdg/awesome/$SOURCEHUD etc/xdg/awesome/$SOURCEDIR >> debian/install
 echo etc/xdg/awesome/debian/menu.lua etc/xdg/awesome/debian/ >> debian/install
 echo usr/share/doc/$DEBFOLDER/$SOURCEDOC usr/share/doc/$DEBFOLDER >> debian/install
 
