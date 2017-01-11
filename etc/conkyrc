@@ -10,7 +10,7 @@ own_window_transparent yes
 own_window_type desktop
 own_window_hints below,skip_taskbar,skip_pager
 own_window_colour 000000
-own_window_argb_visual yes  
+own_window_argb_visual yes
 own_window_argb_value 110
 own_window_transparent yes
 double_buffer yes
@@ -45,35 +45,43 @@ $membar
 swap $alignc $swap / $swapmax $alignr $swapperc%
 ${swapbar}${font LiberationMono:size=7}
 ${color white}*   Top Processes: by CPU		$alignr Top Processes: by Memory   *${color slate grey}	$alignc
-${top name 1}${top pid 1}${top cpu 1}	${top name 2}${top pid 2}${top cpu 2}	${top name 3}${top pid 3}${top cpu 3}	${top name 1}${top pid 1}${top mem 1}	${top name 2}${top pid 2}${top mem 2}	${top name 3}${top pid 3}${top mem 3} 
+${top name 1}${top pid 1}${top cpu 1}	${top name 2}${top pid 2}${top cpu 2}	${top name 3}${top pid 3}${top cpu 3}	${top name 1}${top pid 1}${top mem 1}	${top name 2}${top pid 2}${top mem 2}	${top name 3}${top pid 3}${top mem 3}
 ${top name 4}${top pid 4}${top cpu 4}	${top name 5}${top pid 5}${top cpu 5}	${top name 6}${top pid 6}${top cpu 6}	${top name 4}${top pid 4}${top mem 4}	${top name 5}${top pid 5}${top mem 5}	${top name 6}${top pid 6}${top mem 6}
 ${top name 7}${top pid 7}${top cpu 7}	${top name 8}${top pid 8}${top cpu 8}	${top name 9}${top pid 9}${top cpu 9}	${top name 7}${top pid 7}${top mem 7}	${top name 8}${top pid 8}${top mem 8}	${top name 9}${top pid 9}${top mem 9}	$alignr	${font LiberationMono:size=8}
 ${color green} $alignc HDD
 ${color yellow}/ $alignc ${fs_used /} / ${fs_size /} $alignr ${fs_free_perc /}%
 ${color dark green}${fs_bar /}
 ${color yellow}/home $alignc ${fs_used /home} / ${fs_size /home} $alignr ${fs_free_perc /home}%
-${color dark green}${fs_bar /home} 
+${color dark green}${fs_bar /home}
 ${color green}---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ${font LiberationMono:size=7}
 ${color magenta}Hostname $alignr $nodename ${color blue}
+${if_existing /proc/net/route eth0}
 eth0: $alignr ${color blue} ${addrs eth0}
 ${color blue}Inbound: $alignr ${downspeed eth0} kb/s
 ${color dark blue}${downspeedgraph eth0}
 ${color blue}Outbound: $alignr ${upspeed eth0} kb/s
 ${color dark blue}${upspeedgraph eth0}${color rebecca purple}
+${endif}
+${if_existing /proc/net/route wlan0}
 wlan0: $alignr ${color rebecca purple} ${addrs wlan0} ${color white}
 ${color purple}Inbound: $alignr ${downspeed wlan0} kb/s
 ${color rebecca purple}${downspeedgraph wlan0}
 ${color purple}Outbound: $alignr ${upspeed wlan0} kb/s
 ${color rebecca purple}${upspeedgraph wlan0}${color red}
+${endif}
+${if_existing /proc/net/route bnep0}
 bnep0: $alignr ${color red} ${addrs bnep0}
 ${color red}Inbound: $alignr ${downspeed bnep0} kb/s
 ${color pink}${downspeedgraph bnep0}
 ${color red}Outbound: $alignr ${upspeed bnep0} kb/s
 ${color pink}${upspeedgraph bnep0}
+${endif}
+${if_existing /proc/net/route ppp0}
 ppp0: $alignr ${color orange} ${addrs ppp0}
 ${color orange}Inbound: $alignr ${downspeed ppp0} kb/s
 ${color yellow}${downspeedgraph ppp0}
 ${color orange}Outbound: $alignr ${upspeed ppp0} kb/s
 ${color yellow}${upspeedgraph ppp0}
+${endif}
 ${color green}---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
