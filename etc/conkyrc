@@ -85,3 +85,7 @@ ${color orange}Outbound: $alignr ${upspeed ppp0} kb/s
 ${color yellow}${upspeedgraph ppp0}
 ${endif}
 ${color green}---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+${color red} \#sudo aliases
+${exec bash -c 'cat ~/.*aliases* | grep sudo'}
+${color green} ~env aliases
+${exec bash -c 'cat ~/.*aliases* | grep alias | grep -v sudo | head'}
