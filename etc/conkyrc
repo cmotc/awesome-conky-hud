@@ -55,41 +55,29 @@ ${color yellow}/home $alignc ${fs_used /home} / ${fs_size /home} $alignr ${fs_fr
 ${color dark green}${fs_bar /home}
 ${color green}---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ${font LiberationMono:size=7}
-${color magenta}Hostname $alignr $nodename ${color blue}
-${if_existing /proc/net/route eth0}
+${color magenta}Hostname $alignr $nodename ${color blue} ${if_existing /proc/net/route eth0}
 eth0: $alignr ${color blue} ${addrs eth0}
 ${color blue}Inbound: $alignr ${downspeed eth0} kb/s
 ${color dark blue}${downspeedgraph eth0}
 ${color blue}Outbound: $alignr ${upspeed eth0} kb/s
-${color dark blue}${upspeedgraph eth0}${color rebecca purple}
-${endif}
-${if_existing /proc/net/route wlan0}
+${color dark blue}${upspeedgraph eth0}${color rebecca purple} ${endif} ${if_existing /proc/net/route wlan0}
 wlan0: $alignr ${color rebecca purple} ${addrs wlan0} ${color white}
 ${color purple}Inbound: $alignr ${downspeed wlan0} kb/s
 ${color rebecca purple}${downspeedgraph wlan0}
 ${color purple}Outbound: $alignr ${upspeed wlan0} kb/s
-${color rebecca purple}${upspeedgraph wlan0}${color red}
-${endif}
-${if_existing /proc/net/route bnep0}
+${color rebecca purple}${upspeedgraph wlan0}${color red} ${endif} ${if_existing /proc/net/route bnep0}
 bnep0: $alignr ${color red} ${addrs bnep0}
 ${color red}Inbound: $alignr ${downspeed bnep0} kb/s
 ${color pink}${downspeedgraph bnep0}
 ${color red}Outbound: $alignr ${upspeed bnep0} kb/s
-${color pink}${upspeedgraph bnep0}
-${endif}
-${if_existing /proc/net/route ppp0}
+${color pink}${upspeedgraph bnep0} ${endif} ${if_existing /proc/net/route ppp0}
 ppp0: $alignr ${color orange} ${addrs ppp0}
 ${color orange}Inbound: $alignr ${downspeed ppp0} kb/s
 ${color yellow}${downspeedgraph ppp0}
 ${color orange}Outbound: $alignr ${upspeed ppp0} kb/s
-${color yellow}${upspeedgraph ppp0}
-${endif}
+${color yellow}${upspeedgraph ppp0} ${endif}
 ${color green}---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-${color red} \#sudo aliases
-${font LiberationMono:size=6}
-${exec bash -c 'cat ~/.*aliases* | grep sudo'}
-${font LiberationMono:size=7}
-${color green} ~env aliases
-${font LiberationMono:size=6}
+${color red} \#sudo aliases ${font LiberationMono:size=6}
+${exec bash -c 'cat ~/.*aliases* | grep sudo'}${font LiberationMono:size=7}
+${color green} ~env aliases${font LiberationMono:size=6}
 ${exec bash -c 'cat ~/.*aliases* | grep alias | grep -v sudo | head'}
